@@ -1,0 +1,336 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>My HTML Portfolio</title>
+</head>
+<body>
+    <header>
+        <h1>Bemnet Mandefro</h1>
+        <p><strong>Aspiring Web Developer | Student | Tech Enthusiast </strong></p>
+        <nav>
+            <ul>
+                <li><a href="#Home">Home</a></li>
+                <li><a href="#About">About</a></li>
+                <li><a href="#Skills">Skills</a></li>
+                <li><a href="#Projects">Projects</a></li>
+                <li><a href="#Education">Education</a></li>
+                <li><a href="#Contact">Contact</a></li>
+            </ul>
+        </nav>
+        <hr>
+    </header>
+    <main>
+        <section id="Home">
+            <h2>Welcome to My Portfolio</h2>
+            <p><strong> Hello! I'm Bemnet Mandefro, an aspiring web developer passionate about creating innovative and user-friendly web applications. Explore my portfolio to learn more about my skills, projects, and experiences.</strong></p>
+            <p>This portfolio demonstrates my abilities and showcases my work.
+            <mark>HTML5 semantic elements</mark>
+            </p>
+            <figure>
+                <img src="images/portfolio.jpg" alt="Portfolio Image" width="220">
+                <figcaption>My Profile Photo</figcaption>
+            </figure>
+        </section>
+        <hr>
+        <section id="About">
+            <h2>About Me</h2>
+            <article>
+            <p>I am a dedicated and enthusiastic individual with a strong interest in web development. I enjoy learning new technologies and applying them to create meaningful projects. My goal is to contribute to the tech industry by developing innovative solutions that enhance user experiences.</p>
+            <aside>
+                <h3>Quick Facts</h3>
+                <ul>
+                    <li>Location: Addis Ababa, Ethiopia</li>
+                    <li>University: Unity University</li>
+                    <li>Interests: Web Development, UI/UX Design, Open Source</li>
+                    <li>Experience: Always learning and improving</li>
+                </ul>
+            </aside>
+        </article>
+        </section>
+        <hr>
+        <section id="Skills">
+            <h2>Skills</h2>
+            <article>
+            <ul>
+                <li>HTML5</li>
+                <li>CSS3 (learning)</li>
+                <li>JavaScript (learning)</li>
+            </ul>
+            </article>
+            <article>
+            <h3>Tools</h3>
+            <ul>
+                <li>Visual Studio Code</li>
+                <li>Git</li>
+                <li>GitHub</li>
+            </ul>
+            </article>
+            <article>
+            <h3>Soft Skills</h3>
+            <ul>
+                <li>Problem Solving</li>
+                <li>Team Collaboration</li>
+                <li>Adaptability</li>
+            </article>
+        </section>
+        <hr>
+        <section id="Education">
+            <h2>Education</h2>
+            <article>
+                <h3>Diploma</h3>
+                <p>Unity University, Addis Ababa, Ethiopia</p>
+                <p>Field of Study: Marketing</p>
+                <p>
+                    <strong>Academic Year:</strong>
+                    <time datetime="2024-09-01">2024</time> -
+                    <time datetime="2027-09-01">2027</time>
+                </p>
+                <p>During my studies, I have developed a strong foundation in marketing principles and strategies.</p>
+            </article>
+        </section>
+        <hr>
+        <section id="Project">
+            <h2>My Projects</h2>
+            <article>
+                <hgroup>
+                    <h3>Personal Portfolio Website</h3>
+                    <p>HTML5 Sematic Web Portfolio</p>
+                </hgroup>
+                <p>Completed on
+                    <time datetime="2026-06-01">June 2026</time>
+                </p>
+                <figure>
+                    <img src="images/project1.jpg" alt="Portfolio Project" width="350">
+                    <figcaption>Home Page Screenshot</figcaption>
+                </figure>
+                <p><mark>HTML5 Sematic Elements</mark> including sections,articles,navigation and forms</p>
+                <details>
+                    <summary>Project Details</summary>
+                    <p>The website was built using only HTML.</p>
+                </details>
+                <address>
+                    Project author:
+                    <br>
+                    Bemnet Mandefro
+                    <br>
+                    Email:
+                    <a href="mailto:bemnetmandefro181@gmail.com">
+                        bemnetmandefro181@gmail.com
+                    </a>
+                </address>
+            </article>
+        </section>
+        <hr>
+        <section id="Contact">
+
+            <h2>Contact Me</h2>
+
+            <p>
+                If you would like to work with me or simply say hello,
+                feel free to send me a message using the form below.
+            </p>
+
+            <form action="#" method="post">
+
+                <fieldset>
+
+                    <legend>Contact Form</legend>
+
+                    <p>
+                        <label for="fullname">Full Name:</label><br>
+                        <input
+                            type="text"
+                            id="fullname"
+                            name="fullname"
+                            placeholder="Enter your full name"
+                            required>
+                    </p>
+
+                    <p>
+                        <label for="email">Email Address:</label><br>
+                        <input
+                            type="email"
+                            id="email"
+                            name="email"
+                            placeholder="example@email.com"
+                            required>
+                    </p>
+
+                    <p>
+                        <label for="phone">Phone Number:</label><br>
+                        <input
+                            type="tel"
+                            id="phone"
+                            name="phone"
+                            placeholder="+251-9XXXXXXXX">
+                    </p>
+
+                    <p>
+                        <label for="subject">Subject:</label><br>
+                        <input
+                            type="text"
+                            id="subject"
+                            name="subject"
+                            placeholder="Subject">
+                    </p>
+
+                    <p>
+                        <label for="reason">Reason for Contact:</label><br>
+
+                        <select id="reason" name="reason">
+
+                            <option>General Inquiry</option>
+                            <option>Project Collaboration</option>
+                            <option>Internship Opportunity</option>
+                            <option>Job Opportunity</option>
+                            <option>Other</option>
+
+                        </select>
+
+                    </p>
+
+                    <p>
+
+                        <label>Preferred Contact Method:</label><br>
+
+                        <input
+                            type="radio"
+                            id="contactEmail"
+                            name="contactMethod"
+                            value="Email">
+
+                        <label for="contactEmail">Email</label>
+
+                        <br>
+
+                        <input
+                            type="radio"
+                            id="contactPhone"
+                            name="contactMethod"
+                            value="Phone">
+
+                        <label for="contactPhone">Phone</label>
+
+                    </p>
+
+                    <p>
+
+                        <label>Services Interested In:</label><br>
+
+                        <input
+                            type="checkbox"
+                            id="website"
+                            name="service"
+                            value="Website">
+
+                        <label for="website">Website Development</label>
+
+                        <br>
+
+                        <input
+                            type="checkbox"
+                            id="portfolio"
+                            name="service"
+                            value="Portfolio">
+
+                        <label for="portfolio">Portfolio Website</label>
+
+                        <br>
+
+                        <input
+                            type="checkbox"
+                            id="consultation"
+                            name="service"
+                            value="Consultation">
+
+                        <label for="consultation">Consultation</label>
+
+                    </p>
+
+                    <p>
+
+                        <label for="message">Message:</label><br>
+
+                        <textarea
+                            id="message"
+                            name="message"
+                            rows="6"
+                            cols="50"
+                            placeholder="Write your message here..."
+                            required></textarea>
+
+                    </p>
+
+                    <p>
+
+                        <input
+                            type="checkbox"
+                            id="agree"
+                            required>
+
+                        <label for="agree">
+                            I agree that my information may be used to
+                            respond to my inquiry.
+                        </label>
+
+                    </p>
+
+                    <p>
+
+                        <button type="submit">
+                            Send Message
+                        </button>
+
+                        <button type="reset">
+                            Reset Form
+                        </button>
+
+                    </p>
+
+                </fieldset>
+
+            </form>
+
+        </section>
+
+    </main>
+
+    <hr>
+ <footer>
+
+        <p>
+            2026 Bemnet Mandefro. All Rights Reserved.
+        </p>
+
+        <address>
+
+            <strong>Contact Information</strong>
+
+            <br>
+
+            Email:
+            <a href="mailto:bemnetmandefro181@gmail.com">
+                bemnetmandefro181@gmail.com
+            </a>
+
+            <br>
+
+            Phone:
+            +251-930490034
+
+            <br>
+
+            Addis Ababa, Ethiopia
+
+        </address>
+
+        <p>
+            Thank you for visiting my HTML5 Semantic Portfolio.
+        </p>
+
+    </footer>
+    </main>
+</body>
+</html>
