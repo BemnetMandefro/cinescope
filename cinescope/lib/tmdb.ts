@@ -30,3 +30,10 @@ export function getImageUrl(path: string | null, size = "w500") {
 export async function getMovieDetails(id: string): Promise<MovieDetails> {
   return fetchTMDB<MovieDetails>(`/movie/${id}`);
 }
+
+export async function searchMovies(query: string): Promise<Movie[]> {
+  const data = await fetchTMDB<MovieResponse>(
+    `/search/movie?query=${encodeURIComponent(query)}`
+  );
+  return data.results;
+}
