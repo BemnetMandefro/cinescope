@@ -2,6 +2,7 @@ import { Suspense } from "react";
 import { getTrendingMovies, searchMovies } from "@/lib/tmdb";
 import MovieCard from "@/components/MovieCard";
 import SearchBar from "@/components/SearchBar";
+import Hero from "@/components/Hero";
 
 export default async function Home({
   searchParams,
@@ -12,25 +13,34 @@ export default async function Home({
   const query = q?.trim();
   const movies = query ? await searchMovies(query) : await getTrendingMovies();
 
+  const heroMovie = query ? undefined : movies.find((m) => m.backdrop_path);
+  const gridMovies = heroMovie
+    ? movies.filter((m) => m.id !== heroMovie.id)
+    : movies;
+
   return (
-    <main className="mx-auto max-w-7xl p-8">
-      <Suspense>
-        <SearchBar />
-      </Suspense>
+    <main>
+      {heroMovie && <Hero movie={heroMovie} />}
 
-      <h1 className="mb-8 text-3xl font-bold">
-        {query ? `Results for "${query}"` : "Trending This Week"}
-      </h1>
+      <section className="mx-auto max-w-7xl px-6 py-10">
+        <Suspense>
+          <SearchBar />
+        </Suspense>
 
-      {movies.length > 0 ? (
-        <div className="grid grid-cols-2 gap-6 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5">
-          {movies.map((movie) => (
-            <MovieCard key={movie.id} movie={movie} />
-          ))}
-        </div>
-      ) : (
-        <p className="text-neutral-500">No movies found. Try another search.</p>
-      )}
+        <h1 className="mb-8 text-4xl">
+          {query ? `Results for "${query}"` : "Trending This Week"}
+        </h1>
+
+        {gridMovies.length > 0 ? (
+          <div className="grid grid-cols-2 gap-6 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5">
+            {gridMovies.map((movie) => (
+              <MovieCard key={movie.id} movie={movie} />
+            ))}
+          </div>
+        ) : (
+          <p className="text-muted">No movies found. Try another search.</p>
+        )}
+      </section>
     </main>
   );
 }
