@@ -1,4 +1,5 @@
 import Image from "next/image";
+import Link from "next/link";
 import { Movie } from "@/types/movie";
 import { getImageUrl } from "@/lib/tmdb";
 
@@ -6,7 +7,10 @@ export default function MovieCard({ movie }: { movie: Movie }) {
   const poster = getImageUrl(movie.poster_path);
 
   return (
-    <div className="overflow-hidden rounded-lg bg-neutral-900 text-white">
+    <Link
+      href={`/movie/${movie.id}`}
+      className="block overflow-hidden rounded-lg bg-neutral-900 text-white transition hover:scale-105"
+    >
       {poster ? (
         <Image
           src={poster}
@@ -26,6 +30,6 @@ export default function MovieCard({ movie }: { movie: Movie }) {
           ⭐ {movie.vote_average.toFixed(1)} · {movie.release_date?.slice(0, 4)}
         </p>
       </div>
-    </div>
+    </Link>
   );
 }

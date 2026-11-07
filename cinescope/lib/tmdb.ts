@@ -1,4 +1,4 @@
-import { Movie, MovieResponse } from "@/types/movie";
+import { Movie, MovieDetails, MovieResponse } from "@/types/movie";
 
 const BASE_URL = "https://api.themoviedb.org/3";
 
@@ -25,4 +25,8 @@ export async function getTrendingMovies(): Promise<Movie[]> {
 
 export function getImageUrl(path: string | null, size = "w500") {
   return path ? `https://image.tmdb.org/t/p/${size}${path}` : null;
+}
+
+export async function getMovieDetails(id: string): Promise<MovieDetails> {
+  return fetchTMDB<MovieDetails>(`/movie/${id}`);
 }
