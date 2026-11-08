@@ -114,13 +114,13 @@ export default async function MoviePage({
         {cast.length > 0 && (
           <section className="mt-16">
             <h2 className="mb-4 text-3xl font-display tracking-wide">Cast</h2>
-            <div className="flex gap-4 overflow-x-auto pb-4">
+            <div className="scrollbar-neon flex gap-4 overflow-x-auto pb-4">
               {cast.map((person) => {
                 const photo = getImageUrl(person.profile_path, "w185");
                 return (
                   <div
                     key={person.id}
-                    className="w-36 shrink-0 overflow-hidden rounded-xl border border-white/10 bg-surface"
+                    className="glow-hover w-36 shrink-0 overflow-hidden rounded-xl border border-white/10 bg-surface hover:border-primary/60"
                   >
                     {photo ? (
                       <Image
