@@ -13,8 +13,24 @@ export interface MovieResponse {
   results: Movie[];
   total_pages: number;
 }
+
 export interface Genre {
   id: number;
+  name: string;
+}
+
+export interface CastMember {
+  id: number;
+  name: string;
+  character: string;
+  profile_path: string | null;
+}
+
+export interface Video {
+  id: string;
+  key: string;
+  site: string;
+  type: string;
   name: string;
 }
 
@@ -22,4 +38,6 @@ export interface MovieDetails extends Movie {
   runtime: number | null;
   tagline: string;
   genres: Genre[];
+  credits?: { cast: CastMember[] };
+  videos?: { results: Video[] };
 }

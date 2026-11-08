@@ -12,6 +12,13 @@ export default async function MoviePage({
   const poster = getImageUrl(movie.poster_path);
   const backdrop = getImageUrl(movie.backdrop_path, "w1280");
 
+  const videos = movie.videos?.results ?? [];
+  const trailer =
+    videos.find((v) => v.site === "YouTube" && v.type === "Trailer") ??
+    videos.find((v) => v.site === "YouTube" && v.type === "Teaser");
+
+  const cast = (movie.credits?.cast ?? []).slice(0, 12);
+
   return (
     <main className="relative">
       {backdrop && (
@@ -86,6 +93,62 @@ export default async function MoviePage({
             </p>
           </div>
         </div>
+
+        {trailer && (
+          <section className="mt-16">
+            <h2 className="mb-4 text-3xl font-display tracking-wide">
+              Trailer
+            </h2>
+            <div className="aspect-video w-full overflow-hidden rounded-xl border border-white/10 shadow-[0_0_30px_rgba(139,92,246,0.25)]">
+              <iframe
+                src={`https://www.youtube-nocookie.com/embed/${trailer.key}`}
+                title={`${movie.title} trailer`}
+                allow="accelerometer; encrypted-media; picture-in-picture"
+                allowFullScreen
+                className="h-full w-full"
+              />
+            </div>
+          </section>
+        )}
+
+        {cast.length > 0 && (
+          <section className="mt-16">
+            <h2 className="mb-4 text-3xl font-display tracking-wide">Cast</h2>
+            <div className="flex gap-4 overflow-x-auto pb-4">
+              {cast.map((person) => {
+                const photo = getImageUrl(person.profile_path, "w185");
+                return (
+                  <div
+                    key={person.id}
+                    className="w-36 shrink-0 overflow-hidden rounded-xl border border-white/10 bg-surface"
+                  >
+                    {photo ? (
+                      <Image
+                        src={photo}
+                        alt={person.name}
+                        width={185}
+                        height={278}
+                        className="h-auto w-full"
+                      />
+                    ) : (
+                      <div className="flex aspect-[2/3] items-center justify-center bg-surface-2 text-3xl text-muted">
+                        {person.name.charAt(0)}
+                      </div>
+                    )}
+                    <div className="p-3">
+                      <p className="truncate text-sm font-semibold">
+                        {person.name}
+                      </p>
+                      <p className="truncate text-xs text-muted">
+                        {person.character}
+                      </p>
+                    </div>
+                  </div>
+                );
+              })}
+            </div>
+          </section>
+        )}
       </div>
     </main>
   );

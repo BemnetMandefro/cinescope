@@ -28,7 +28,9 @@ export function getImageUrl(path: string | null, size = "w500") {
 }
 
 export async function getMovieDetails(id: string): Promise<MovieDetails> {
-  return fetchTMDB<MovieDetails>(`/movie/${id}`);
+  return fetchTMDB<MovieDetails>(
+    `/movie/${id}?append_to_response=credits,videos`
+  );
 }
 
 export async function searchMovies(query: string): Promise<Movie[]> {
