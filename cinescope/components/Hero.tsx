@@ -3,7 +3,13 @@ import Link from "next/link";
 import { Movie } from "@/types/movie";
 import { getImageUrl } from "@/lib/tmdb";
 
-export default function Hero({ movie }: { movie: Movie }) {
+export default function Hero({
+  movie,
+  label,
+}: {
+  movie: Movie;
+  label: string;
+}) {
   const backdrop = getImageUrl(movie.backdrop_path, "w1280");
 
   return (
@@ -25,7 +31,7 @@ export default function Hero({ movie }: { movie: Movie }) {
       <div className="absolute inset-x-0 bottom-0">
         <div className="mx-auto max-w-7xl px-6 pb-12">
           <p className="mb-3 text-sm font-medium uppercase tracking-widest text-accent">
-            #1 Trending This Week
+            {label}
           </p>
           <h2 className="font-display text-5xl tracking-wide md:text-7xl">
             {movie.title}
