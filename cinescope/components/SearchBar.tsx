@@ -21,12 +21,17 @@ export default function SearchBar() {
   }, [value, currentQuery, router]);
 
   return (
-    <input
-      type="search"
-      value={value}
-      onChange={(e) => setValue(e.target.value)}
-      placeholder="Search for a movie..."
-      className="mb-8 w-full rounded-lg border border-neutral-300 bg-white px-4 py-3 text-black outline-none focus:border-blue-500"
-    />
+    <div className="relative mb-10">
+      <span className="pointer-events-none absolute left-5 top-1/2 -translate-y-1/2 text-muted">
+        🔍
+      </span>
+      <input
+        type="search"
+        value={value}
+        onChange={(e) => setValue(e.target.value)}
+        placeholder="Search for a movie..."
+        className="w-full rounded-full border border-white/10 bg-surface py-4 pl-14 pr-6 text-white placeholder:text-muted outline-none transition focus:border-primary focus:shadow-[0_0_22px_rgba(139,92,246,0.45)]"
+      />
+    </div>
   );
 }
