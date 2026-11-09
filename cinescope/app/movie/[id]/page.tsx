@@ -2,6 +2,15 @@ import Image from "next/image";
 import Link from "next/link";
 import { getMovieDetails, getImageUrl } from "@/lib/tmdb";
 
+function formatMoney(amount: number) {
+  if (!amount) return null;
+  return new Intl.NumberFormat("en-US", {
+    style: "currency",
+    currency: "USD",
+    maximumFractionDigits: 0,
+  }).format(amount);
+}
+
 export default async function MoviePage({
   params,
 }: {
@@ -18,6 +27,21 @@ export default async function MoviePage({
     videos.find((v) => v.site === "YouTube" && v.type === "Teaser");
 
   const cast = (movie.credits?.cast ?? []).slice(0, 12);
+  const crew = movie.credits?.crew ?? [];
+
+  const directors = Array.from(
+    new Set(crew.filter((c) => c.job === "Director").map((c) => c.name))
+  );
+  const writers = Array.from(
+    new Set(
+      crew
+        .filter((c) => ["Screenplay", "Writer", "Story"].includes(c.job))
+        .map((c) => c.name)
+    )
+  ).slice(0, 3);
+
+  const budget = formatMoney(movie.budget);
+  const revenue = formatMoney(movie.revenue);
 
   return (
     <main className="relative">
@@ -91,6 +115,47 @@ export default async function MoviePage({
             <p className="mt-2 max-w-2xl leading-relaxed text-gray-300">
               {movie.overview || "No overview available."}
             </p>
+
+            <dl className="mt-8 grid max-w-2xl grid-cols-1 gap-x-8 gap-y-4 text-sm sm:grid-cols-2">
+              {directors.length > 0 && (
+                <div>
+                  <dt className="text-xs font-semibold uppercase tracking-widest text-muted">
+                    {directors.length > 1 ? "Directors" : "Director"}
+                  </dt>
+                  <dd className="mt-1 text-white">{directors.join(", ")}</dd>
+                </div>
+              )}
+              {writers.length > 0 && (
+                <div>
+                  <dt className="text-xs font-semibold uppercase tracking-widest text-muted">
+                    {writers.length > 1 ? "Writers" : "Writer"}
+                  </dt>
+                  <dd className="mt-1 text-white">{writers.join(", ")}</dd>
+                </div>
+              )}
+              <div>
+                <dt className="text-xs font-semibold uppercase tracking-widest text-muted">
+                  Status
+                </dt>
+                <dd className="mt-1 text-white">{movie.status}</dd>
+              </div>
+              {budget && (
+                <div>
+                  <dt className="text-xs font-semibold uppercase tracking-widest text-muted">
+                    Budget
+                  </dt>
+                  <dd className="mt-1 text-white">{budget}</dd>
+                </div>
+              )}
+              {revenue && (
+                <div>
+                  <dt className="text-xs font-semibold uppercase tracking-widest text-muted">
+                    Box Office
+                  </dt>
+                  <dd className="mt-1 text-accent">{revenue}</dd>
+                </div>
+              )}
+            </dl>
           </div>
         </div>
 
