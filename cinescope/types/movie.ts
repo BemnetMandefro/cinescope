@@ -83,5 +83,6 @@ export interface MovieDetails extends Movie {
   images?: { backdrops: MovieImage[] };
   reviews?: { results: Review[] };
   similar?: { results: Movie[] };
+  recommendations?: { results: Movie[] };
   "watch/providers"?: { results: Record<string, CountryProviders> };
 }

@@ -3,6 +3,9 @@ import Link from "next/link";
 import { Movie } from "@/types/movie";
 import { getImageUrl } from "@/lib/tmdb";
 
+const FADE_MASK =
+  "linear-gradient(to bottom, black 0%, black 45%, transparent 100%)";
+
 export default function Hero({
   movie,
   label,
@@ -13,23 +16,27 @@ export default function Hero({
   const backdrop = getImageUrl(movie.backdrop_path, "w1280");
 
   return (
-    <section className="relative h-[70vh] min-h-[420px] w-full overflow-hidden">
+    <section className="relative isolate h-[75vh] min-h-[460px] w-full overflow-hidden">
       {backdrop && (
-        <Image
-          src={backdrop}
-          alt={movie.title}
-          fill
-          priority
-          sizes="100vw"
-          className="object-cover"
-        />
+        <div
+          className="absolute inset-0 -z-10"
+          style={{ maskImage: FADE_MASK, WebkitMaskImage: FADE_MASK }}
+        >
+          <Image
+            src={backdrop}
+            alt={movie.title}
+            fill
+            priority
+            sizes="100vw"
+            className="object-cover"
+          />
+          <div className="absolute inset-0 bg-gradient-to-r from-background/90 via-background/30 to-background/60" />
+          <div className="absolute inset-0 bg-gradient-to-b from-background/50 via-transparent to-transparent" />
+        </div>
       )}
 
-      <div className="absolute inset-0 bg-gradient-to-t from-background via-background/50 to-transparent" />
-      <div className="absolute inset-0 bg-gradient-to-r from-background/90 via-background/30 to-transparent" />
-
       <div className="absolute inset-x-0 bottom-0">
-        <div className="mx-auto max-w-7xl px-6 pb-12">
+        <div className="mx-auto max-w-7xl px-6 pb-14">
           <p className="mb-3 text-sm font-medium uppercase tracking-widest text-accent">
             {label}
           </p>

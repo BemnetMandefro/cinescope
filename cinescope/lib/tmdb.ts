@@ -54,7 +54,7 @@ export async function searchMovies(query: string): Promise<Movie[]> {
 
 export async function getMovieDetails(id: string): Promise<MovieDetails> {
   return fetchTMDB<MovieDetails>(
-    `/movie/${id}?append_to_response=credits,videos,images,reviews,similar,watch/providers&include_image_language=en,null`
+    `/movie/${id}?append_to_response=credits,videos,images,reviews,recommendations,similar,watch/providers&include_image_language=en,null`
   );
 }
 
