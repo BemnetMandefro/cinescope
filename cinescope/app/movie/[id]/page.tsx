@@ -3,6 +3,7 @@ import Link from "next/link";
 import { getMovieDetails, getImageUrl } from "@/lib/tmdb";
 import MovieRow from "@/components/MovieRow";
 import Gallery from "@/components/Gallery";
+import Reviews from "@/components/Reviews";
 
 function formatMoney(amount: number) {
   if (!amount) return null;
@@ -49,6 +50,7 @@ export default async function MoviePage({
   const revenue = formatMoney(movie.revenue);
 
   const photos = (movie.images?.backdrops ?? []).slice(0, 15);
+  const reviews = (movie.reviews?.results ?? []).slice(0, 6);
 
   const recommended = movie.recommendations?.results ?? [];
   const similar = (
@@ -238,6 +240,8 @@ export default async function MoviePage({
         )}
 
         <Gallery images={photos} title={movie.title} />
+
+        <Reviews reviews={reviews} />
 
         <MovieRow title="More Like This" movies={similar} />
       </div>
